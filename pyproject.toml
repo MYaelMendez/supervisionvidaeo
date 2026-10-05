@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "supervisionvidaeo"
+version = "1.0.0"
+description = "Produce and verify in one contract — a local video generator that refuses to emit a render it has not measured."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Yael Mendez" }]
+keywords = ["video", "supervision", "computer-vision", "deterministic", "local", "gpu", "receipt"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+dependencies = [
+    "numpy>=1.24.0",
+    "opencv-python-headless>=4.8.0",
+]
+
+[project.optional-dependencies]
+# QR *encoding* is optional — decoding (qr_vision) needs only OpenCV.
+qr = ["qrcode>=7.0", "Pillow>=9.0"]
+dev = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://myaelmendez.github.io"
+Source = "https://github.com/MYaelMendez"
+
+[tool.setuptools.packages.find]
+include = ["supervisionvidaeo*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
